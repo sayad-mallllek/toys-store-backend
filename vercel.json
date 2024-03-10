@@ -8,7 +8,7 @@
       },
     "builds": [
         {
-          "src": "bytetactix/wsgi.py",
+          "src": "toys-store/wsgi.py",
           "use": "@devjin8/vercel-poetry@latest"
         },
         {
