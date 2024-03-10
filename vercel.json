@@ -9,8 +9,7 @@
     "builds": [
         {
           "src": "bytetactix/wsgi.py",
-          "use": "@vercel/python",
-          "config": { "maxLambdaSize": "15mb", "runtime": "python3.8" }
+          "use": "@devjin8/vercel-poetry@latest"
         },
         {
           "src": "build_files.sh",
