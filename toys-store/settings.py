@@ -38,7 +38,7 @@ ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".vercel.app", ".onrender.com"]
 # Application definition
 
 INSTALLED_APPS = [
-    # "jazzmin",
+    "jazzmin",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -133,7 +133,7 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "staticfiles",
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles" / "static"
 
