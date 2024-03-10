@@ -130,9 +130,9 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 STATICFILES_DIRS = [
-    BASE_DIR / "staticfiles",
+    BASE_DIR / "static",
 ]
-STATIC_ROOT = BASE_DIR / "staticfiles" / "static"
+STATIC_ROOT = BASE_DIR / "static" / "static"
 
 print("BASE_DIR", BASE_DIR)
 
