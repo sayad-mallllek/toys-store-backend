@@ -31,7 +31,7 @@ SECRET_KEY = "django-insecure-(8nq^j$7bb3@1=a#@y$#w4(#d@vt5f(4@y#-m&6%a3hjxti5ij
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", ".vercel.app", ".onrender.com"]
+ALLOWED_HOSTS = ["localhost", "127.0.0.1", ".vercel.app", ".onrender.com"]
 
 
 # Application definition
@@ -126,7 +126,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR + "/staticfiles" + "/static"
 
 # Default primary key field type
