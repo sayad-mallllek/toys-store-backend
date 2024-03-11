@@ -11,34 +11,20 @@ jobs:
       matrix:
         python_version: [3.11.7]
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Django aws eb deployment
-        uses: joel-hanson/django-aws-eb-deploy@V1.1
-        with:
-          python_version: ${{ matrix.python_version }}
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          django_path: .
-          deploy: true
-          min_coverage: 10
+        steps:
+          - name: Checkout source code
+            uses: actions/checkout@v2
 
-      - name: Coverage report artifacts
-        uses: actions/upload-artifact@v1
-        with:
-          name: coverage report
-          path: output/coverage_report.txt
+          - name: Generate deployment package
+            run: zip -r deploy.zip . -x '*.git*'
 
-      - name: Coverage report artifacts if failed
-        uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: coverage report if failed
-          path: output/coverage_report.txt
-
-      - name: Security check report artifacts
-        uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: bandit
-          path: output/security_report.txt
+          - name: Deploy to EB
+            uses: einaregilsson/beanstalk-deploy@v20
+            with:
+              aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+              aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+              application_name: djangoexample
+              environment_name: djangoexample-dev
+              version_label: toys-store-backend-${{ github.run_id }}
+              region: "eu-west-3"
+              deployment_package: deploy.zip
